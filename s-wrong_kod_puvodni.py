@@ -1,7 +1,4 @@
 # Single responsibility
-#Každá třída má svou funkci. Jedna třída má svou zodpovědnost
-
-# Single responsibility
 
 class User:
     def __init__(self, name, last_name, age):
@@ -19,21 +16,15 @@ class User:
             raise ValueError("Age must be between 0 and 130 ")
         self._age = age
 
-class Console:
-    @staticmethod
-    def display(obj):
-        print(f"{obj.name} {obj.last_name} {obj.age}")
+    def display(self):
+        print(f"{self.name} {self.last_name} {self.age}")
 
-    @staticmethod
-    def input(obj):
-        obj.name = input("Input name:")
-        obj.last_name = input("Input last name:")
-        obj.age = int(input("Input age:"))
+    def input(self):
+        self.name = input("Input name:")
+        self.last_name = input("Input last name:")
+        self.age = int(input("Input age:"))
 
 obj = User("Bill", "Windows", 34)
 obj.display()
 obj.input()
 obj.display()
-
-
-
