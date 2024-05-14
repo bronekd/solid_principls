@@ -31,9 +31,9 @@ class Console:
         obj.age = int(input("Input age:"))
 
 obj = User("Bill", "Windows", 34)
-obj.display()
-obj.input()
-obj.display()
+Console.display(obj)
+obj = Console.input()
+Console.display(obj)
 
 
 
