@@ -12,6 +12,7 @@ class Output(ABC):
     def display(self):
         pass
 
+
 class ConsoleOutput(Output):
     def display(self):
         print(f"{self.data}")
