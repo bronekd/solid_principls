@@ -2,28 +2,27 @@
 
 import io
 import os
+from abc import ABC, abstractmethod
 
-
-class Output:
-    def __init__(self, data, output_type):
-        # output_type determines the destination type for the data.
-        self.output_type = output_type
+class Output(ABC):
+    def __init__(self, data):
         self.data = data
 
+    @abstractmethod
     def display(self):
-        if self.output_type == "console":
-            print(f"{self.data}")
+        pass
 
-        elif self.output_type == "file":
-            file_dir = os.path.dirname(os.path.abspath(__file__))
-            os.chdir(file_dir)
+class ConsoleOutput(Output):
+    def display(self):
+        print(f"{self.data}")
 
-            with open('output.txt', 'w') as f:
-                 f.write(self.data)
+class FileOutput(Output):
+    def display(self):
+        with open('output.txt', 'w') as f:
+            f.write(self.data)
 
-        else:
-            raise ValueError("Wrong type of output")
-
-obj = Output("some string","file")
+obj = ConsoleOutput("some string")
 obj.display()
 
+obj2 = FileOutput("another string")
+obj2.display()
